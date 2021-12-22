@@ -1,0 +1,25 @@
+  {
+    path: '{{camelCase name}}',
+    {{#if hasLayout}}
+      {{#if (isLayout layoutType 'Public')}}
+        {{#if hasPageComponent}}
+        element: <Layout.Public pageComponent={ {{pascalCase name}}Page} />,
+        {{^}}
+        element: <Layout.Public />,
+        {{/if}}
+      {{^}}
+        {{#if hasPageComponent}}
+        element: <Layout.Private pageComponent={ {{pascalCase name}}Page} />,
+        {{^}}
+        element: <Layout.Private />,
+        {{/if}}
+      {{/if}}
+    {{^}}
+      {{#if hasPageComponent}}
+      element: <{{pascalCase name}}Page />,
+      {{/if}}
+    {{/if}}
+    roles: [],
+    params: { title: '{{pascalCase name}}' }
+  },
+  

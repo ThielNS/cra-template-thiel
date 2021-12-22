@@ -1,0 +1,43 @@
+/**
+ *
+ * {{ pascalCase name }} Page
+ *
+ */
+
+import { Empty } from 'antd';
+{{#if hasLayout}}
+{{#if (isLayout layoutType 'Public')}}
+import { PropsWithPublicLayout } from 'components/Layout/Public';
+{{^}}
+import { PropsWithPrivateLayout } from 'components/Layout/Private';
+{{/if}}
+{{/if}}
+
+interface Props {}
+
+{{#if hasLayout}}
+{{#if (isLayout layoutType 'Public')}}
+function {{ pascalCase name }}Page({ children }: PropsWithPublicLayout<Props>) {
+{{^}}
+function {{ pascalCase name }}Page({ children }: PropsWithPrivateLayout<Props>) {
+{{/if}}
+{{^}}
+function {{ pascalCase name }}Page(props: Props) {
+{{/if}}
+  return (
+    <div>
+      <Empty
+        image="https://gw.alipayobjects.com/zos/antfincdn/ZHrcdLPrvN/empty.svg"
+        imageStyle=\{{
+          height: 200,
+        }}
+        description={<h2>{{ pascalCase name }}Page</h2>}
+      />
+      {{#if hasLayout}}
+      {children}
+      {{/if}}
+    </div>
+  );
+}
+
+export default {{ pascalCase name }}Page;

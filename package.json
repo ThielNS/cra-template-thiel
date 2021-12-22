@@ -1,0 +1,27 @@
+{
+  "name": "cra-template-thiel",
+  "version": "0.0.1",
+  "keywords": [
+    "react",
+    "create-react-app",
+    "template",
+    "typescript"
+  ],
+  "description": "Base template for projects made with create-react-app",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ThielNS/cra-template-thiel.git"
+  },
+  "license": "MIT",
+  "engines": {
+    "node": ">=12"
+  },
+  "bugs": {
+    "url": "https://github.com/ThielNS/cra-template-thiel/issues"
+  },
+  "files": [
+    "screens",
+    "template",
+    "template.json"
+  ]
+}

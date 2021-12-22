@@ -1,0 +1,6 @@
+# production
+/build
+
+tsconfig.json
+
+*/*.test.tsx

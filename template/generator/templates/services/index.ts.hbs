@@ -1,0 +1,41 @@
+/**
+ *
+ * {{ pascalCase name }} Service
+ *
+ */
+
+import ServiceBase from 'modules/services/ServiceBase';
+import {
+  {{ pascalCase name}}ServiceListResponse,
+  {{ pascalCase name}}ServiceCreateResponse,
+  {{ pascalCase name}}ServiceEditResponse,
+  {{ pascalCase name}}ServiceRemoveResponse,
+} from './types';
+
+export default class {{pascalCase name}}Service extends ServiceBase {
+  baseUrl = '/{{camelCase name}}';
+
+  constructor() {
+    super();
+  }
+
+  public list(params: any) {
+    return this.service
+      .get<{{ pascalCase name}}ServiceListResponse>(this.baseUrl, { params });
+  }
+
+  public create(data: any) {
+    return this.service
+      .post<{{ pascalCase name}}ServiceCreateResponse>(this.baseUrl, data);
+  }
+
+  public edit({{camelCase name}}Id: string, data: any) {
+    return this.service
+      .put<{{ pascalCase name}}ServiceEditResponse>(`${this.baseUrl}/${ {{camelCase name}}Id }`, data);
+  }
+
+  public remove({{camelCase name}}Id: string) {
+    return this.service
+      .post<{{ pascalCase name}}ServiceRemoveResponse>(`${this.baseUrl}/${ {{camelCase name}}Id }`);
+  }
+}
