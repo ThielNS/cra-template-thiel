@@ -1,4 +1,4 @@
-const CracoLessPlugin = require('craco-less-fix');
+const CracoLessPlugin = require('craco-less');
 const fs = require('fs');
 const path = require('path');
 const lessToJs = require('less-vars-to-js');
