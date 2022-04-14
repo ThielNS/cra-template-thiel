@@ -1,0 +1,55 @@
+import { useMutation, useQuery, useQueryClient } from 'react-query';
+import {{ camelCase name }}Service from '.';
+import { {{ pascalCase name }}ServiceListRequestParams } from './types';
+
+export function use{{ pascalCase name }}List(params?: {{ pascalCase name }}ServiceListRequestParams) {
+  const query = useQuery(['{{ camelCase name }}', params], () =>
+    {{ camelCase name }}Service.list(params),
+  );
+
+  return query;
+}
+
+export function use{{ pascalCase name }}Detail({{ camelCase name }}Id: string) {
+  const query = useQuery(['{{ camelCase name }}', {{ camelCase name }}Id], () =>
+    {{ camelCase name }}Service.detail({{ camelCase name }}Id),
+  );
+
+  return query;
+}
+
+export function use{{ pascalCase name }}Create() {
+  const queryClient = useQueryClient();
+
+  const mutation = useMutation({{ camelCase name }}Service.create, {
+    onSuccess() {
+      queryClient.invalidateQueries('{{ camelCase name }}');
+    },
+  });
+
+  return mutation;
+}
+
+export function use{{ pascalCase name }}Edit() {
+  const queryClient = useQueryClient();
+
+  const mutation = useMutation({{ camelCase name }}Service.edit, {
+    onSuccess() {
+      queryClient.invalidateQueries('{{ camelCase name }}');
+    },
+  });
+
+  return mutation;
+}
+
+export function use{{ pascalCase name }}Remove() {
+  const queryClient = useQueryClient();
+
+  const mutation = useMutation({{ camelCase name }}Service.remove, {
+    onSuccess() {
+      queryClient.invalidateQueries('{{ camelCase name }}');
+    },
+  });
+
+  return mutation;
+}

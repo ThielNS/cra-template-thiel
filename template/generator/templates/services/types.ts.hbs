@@ -1,7 +1,17 @@
-export interface {{pascalCase name}}ServiceListResponse {}
+export interface {{ pascalCase name }} {}
 
-export interface {{pascalCase name}}ServiceCreateResponse {}
+export type {{ pascalCase name }}ServiceListResponse = {{ pascalCase name }}[];
 
-export interface {{pascalCase name}}ServiceEditResponse {}
+export interface {{ pascalCase name }}ServiceListRequestParams {}
 
-export interface {{pascalCase name}}ServiceRemoveResponse {}
+export type {{ pascalCase name }}ServiceDetailResponse = {{ pascalCase name }}
+
+export interface {{ pascalCase name }}ServiceCreateData {}
+
+export interface {{ pascalCase name }}ServiceCreateResponse {}
+
+export interface {{ pascalCase name }}ServiceEditData {}
+
+export interface {{ pascalCase name }}ServiceEditResponse {}
+
+export interface {{ pascalCase name }}ServiceRemoveResponse {}

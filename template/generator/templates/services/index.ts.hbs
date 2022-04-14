@@ -4,38 +4,65 @@
  *
  */
 
-import ServiceBase from 'modules/services/ServiceBase';
+import axiosInstance from 'modules/configs/axiosInstance';
 import {
-  {{ pascalCase name}}ServiceListResponse,
-  {{ pascalCase name}}ServiceCreateResponse,
-  {{ pascalCase name}}ServiceEditResponse,
-  {{ pascalCase name}}ServiceRemoveResponse,
+  {{ pascalCase name }}ServiceDetailResponse,
+  {{ pascalCase name }}ServiceListResponse,
+  {{ pascalCase name }}ServiceListRequestParams,
+  {{ pascalCase name }}ServiceCreateData,
+  {{ pascalCase name }}ServiceCreateResponse,
+  {{ pascalCase name }}ServiceEditData,
+  {{ pascalCase name }}ServiceEditResponse,
+  {{ pascalCase name }}ServiceRemoveResponse,
 } from './types';
 
-export default class {{pascalCase name}}Service extends ServiceBase {
-  baseUrl = '/{{camelCase name}}';
+const baseUrl = '/{{ camelCase name }}';
 
-  constructor() {
-    super();
-  }
+const {{ camelCase name }}Service = {
+  async list(params?: {{ pascalCase name }}ServiceListRequestParams) {
+    const result = await axiosInstance.get<{{ pascalCase name }}ServiceListResponse>(
+      baseUrl,
+      {
+        params,
+      },
+    );
 
-  public list(params: any) {
-    return this.service
-      .get<{{ pascalCase name}}ServiceListResponse>(this.baseUrl, { params });
-  }
+    return result.data;
+  },
 
-  public create(data: any) {
-    return this.service
-      .post<{{ pascalCase name}}ServiceCreateResponse>(this.baseUrl, data);
-  }
+  async detail({{ camelCase name }}Id: string) {
+    const result = await axiosInstance.get<{{ pascalCase name }}ServiceDetailResponse>(
+      `${baseUrl}/${ {{ camelCase name }}Id }`,
+    );
 
-  public edit({{camelCase name}}Id: string, data: any) {
-    return this.service
-      .put<{{ pascalCase name}}ServiceEditResponse>(`${this.baseUrl}/${ {{camelCase name}}Id }`, data);
-  }
+    return result.data;
+  },
 
-  public remove({{camelCase name}}Id: string) {
-    return this.service
-      .post<{{ pascalCase name}}ServiceRemoveResponse>(`${this.baseUrl}/${ {{camelCase name}}Id }`);
-  }
-}
+  async create(data: {{ pascalCase name }}ServiceCreateData) {
+    const result = await axiosInstance.post<{{ pascalCase name }}ServiceCreateResponse>(
+      baseUrl,
+      data,
+    );
+
+    return result.data;
+  },
+
+  async edit({ {{ camelCase name }}Id, ...data }: {{ pascalCase name }}ServiceEditData & { {{ camelCase name }}Id: string }) {
+    const result = await axiosInstance.put<{{ pascalCase name }}ServiceEditResponse>(
+      `${baseUrl}/${ {{ camelCase name }}Id }`,
+      data,
+    );
+
+    return result.data;
+  },
+
+  async remove({{ camelCase name }}Id: string) {
+    const result = await axiosInstance.delete<{{ pascalCase name }}ServiceRemoveResponse>(
+      `${baseUrl}/${ {{ camelCase name }}Id }`,
+    );
+
+    return result.data;
+  },
+};
+
+export default {{ camelCase name }}Service;

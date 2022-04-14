@@ -28,6 +28,11 @@ const generatorConfig = {
     const actions = [
       {
         type: 'add',
+        path: `${generatorPaths.services}/{{camelCase name}}/hooks.ts`,
+        templateFile: `${templatePaths.services}/hooks.ts.hbs`,
+      },
+      {
+        type: 'add',
         path: `${generatorPaths.services}/{{camelCase name}}/index.ts`,
         templateFile: `${templatePaths.services}/index.ts.hbs`,
       },
